@@ -311,7 +311,7 @@ def h1(state):
     return count
 
 # Custom heuristic function - you should replace this with your own ID
-def h123456789(state):
+def h307367910(state):
     """
     A custom heuristic function that aims to make the A* search more efficient.
     This heuristic is admissible because it never overestimates the cost to reach the goal.
@@ -395,7 +395,7 @@ if __name__ == "__main__":
     
     print("h0 heuristic:", h0(s1))
     print("h1 heuristic:", h1(s1))
-    print("Custom heuristic:", h123456789(s1))
+    print("Custom heuristic:", h307367910(s1))
     
     # Test s2
     print("\n\nExample 2:")
@@ -415,7 +415,7 @@ if __name__ == "__main__":
     
     print("h0 heuristic:", h0(s2))
     print("h1 heuristic:", h1(s2))
-    print("Custom heuristic:", h123456789(s2))
+    print("Custom heuristic:", h307367910(s2))
     
     # Test A* search with s1
     print("\nRunning A* search on s1 with h1 heuristic...")
