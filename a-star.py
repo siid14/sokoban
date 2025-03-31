@@ -351,22 +351,11 @@ def move_cost(state1, state2):
 if __name__ == "__main__":
     # Example Sokoban states
     # 0 = empty, 1 = wall, 2 = keeper, 3 = box, 4 = goal, 5 = box on goal, 6 = keeper on goal
-    # From the PDF examples
     s1 = [
         [1, 1, 1, 1, 1],
         [1, 0, 0, 4, 1],
         [1, 0, 2, 0, 1],
         [1, 0, 3, 0, 1],
-        [1, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1]
-    ]
-    
-    # PDF example state with the box to the right of the keeper
-    s0 = [
-        [1, 1, 1, 1, 1],
-        [1, 0, 0, 4, 1],
-        [1, 0, 2, 3, 1],
-        [1, 0, 0, 0, 1],
         [1, 0, 0, 0, 1],
         [1, 1, 1, 1, 1]
     ]
@@ -380,120 +369,8 @@ if __name__ == "__main__":
         [1, 1, 1, 1, 1]
     ]
     
-    # Create test states for box pushing in all four directions
-    # Box above keeper with space for pushing
-    push_up = [
-        [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 3, 0, 0, 1],
-        [1, 0, 0, 2, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1]
-    ]
-    
-    # Box below keeper with space for pushing
-    push_down = [
-        [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 2, 0, 0, 1],
-        [1, 0, 0, 3, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1]
-    ]
-    
-    # Box to the left of keeper with space for pushing
-    push_left = [
-        [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 3, 2, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1]
-    ]
-    
-    # Box to the right of keeper with space for pushing
-    push_right = [
-        [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 2, 3, 0, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1]
-    ]
-    
-    # Test box pushing in all directions
-    print("Testing box pushing:")
-    
-    print("\nPush Up Test:")
-    print("Initial state:")
-    for row in push_up:
-        print(row)
-    up_move = try_move(push_up, 'up')
-    if up_move:
-        print("Result after pushing up:")
-        for row in up_move:
-            print(row)
-    else:
-        print("Cannot push up")
-        
-    print("\nPush Down Test:")
-    print("Initial state:")
-    for row in push_down:
-        print(row)
-    down_move = try_move(push_down, 'down')
-    if down_move:
-        print("Result after pushing down:")
-        for row in down_move:
-            print(row)
-    else:
-        print("Cannot push down")
-        
-    print("\nPush Left Test:")
-    print("Initial state:")
-    for row in push_left:
-        print(row)
-    left_move = try_move(push_left, 'left')
-    if left_move:
-        print("Result after pushing left:")
-        for row in left_move:
-            print(row)
-    else:
-        print("Cannot push left")
-        
-    print("\nPush Right Test:")
-    print("Initial state:")
-    for row in push_right:
-        print(row)
-    right_move = try_move(push_right, 'right')
-    if right_move:
-        print("Result after pushing right:")
-        for row in right_move:
-            print(row)
-    else:
-        print("Cannot push right")
-    
-    # Continue with original tests...
-    print("\n\nExample 0 (PDF state):")
-    print("Initial state s0:")
-    for row in s0:
-        print(row)
-    
-    print("\nIs this a goal state?", goal_test(s0))
-    
-    print("\nPossible next states from s0:")
-    next_states_list = next_states(s0)
-    for i, state in enumerate(next_states_list):
-        print(f"Next state {i+1}:")
-        for row in state:
-            print(row)
-        print()
-    
-    print("h0 heuristic:", h0(s0))
-    print("h1 heuristic:", h1(s0))
-    print("Custom heuristic:", h123456789(s0))
-    
     # Test s1
-    print("\n\nExample 1:")
+    print("Example 1:")
     print("Initial state s1:")
     for row in s1:
         print(row)
