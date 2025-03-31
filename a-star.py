@@ -347,39 +347,194 @@ def move_cost(state1, state2):
 
 # This part would include test code and examples of using the functions
 
-# Test the implementation with a simple example
+# Test the implementation with the provided examples
 if __name__ == "__main__":
-    # Example Sokoban state
+    # Example Sokoban states
     # 0 = empty, 1 = wall, 2 = keeper, 3 = box, 4 = goal, 5 = box on goal, 6 = keeper on goal
-    example_state = [
+    # From the PDF examples
+    s1 = [
+        [1, 1, 1, 1, 1],
+        [1, 0, 0, 4, 1],
+        [1, 0, 2, 0, 1],
+        [1, 0, 3, 0, 1],
+        [1, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1]
+    ]
+    
+    # PDF example state with the box to the right of the keeper
+    s0 = [
+        [1, 1, 1, 1, 1],
+        [1, 0, 0, 4, 1],
+        [1, 0, 2, 3, 1],
+        [1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1]
+    ]
+
+    s2 = [
+        [1, 1, 1, 1, 1],
+        [1, 0, 0, 4, 1],
+        [1, 0, 2, 3, 1],
+        [1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1]
+    ]
+    
+    # Create test states for box pushing in all four directions
+    # Box above keeper with space for pushing
+    push_up = [
         [1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 2, 3, 4, 0, 1],
+        [1, 0, 0, 3, 0, 0, 1],
+        [1, 0, 0, 2, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1]
     ]
     
+    # Box below keeper with space for pushing
+    push_down = [
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 2, 0, 0, 1],
+        [1, 0, 0, 3, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1]
+    ]
+    
+    # Box to the left of keeper with space for pushing
+    push_left = [
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 1],
+        [1, 0, 3, 2, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1]
+    ]
+    
+    # Box to the right of keeper with space for pushing
+    push_right = [
+        [1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 2, 3, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1]
+    ]
+    
+    # Test box pushing in all directions
+    print("Testing box pushing:")
+    
+    print("\nPush Up Test:")
     print("Initial state:")
-    for row in example_state:
+    for row in push_up:
+        print(row)
+    up_move = try_move(push_up, 'up')
+    if up_move:
+        print("Result after pushing up:")
+        for row in up_move:
+            print(row)
+    else:
+        print("Cannot push up")
+        
+    print("\nPush Down Test:")
+    print("Initial state:")
+    for row in push_down:
+        print(row)
+    down_move = try_move(push_down, 'down')
+    if down_move:
+        print("Result after pushing down:")
+        for row in down_move:
+            print(row)
+    else:
+        print("Cannot push down")
+        
+    print("\nPush Left Test:")
+    print("Initial state:")
+    for row in push_left:
+        print(row)
+    left_move = try_move(push_left, 'left')
+    if left_move:
+        print("Result after pushing left:")
+        for row in left_move:
+            print(row)
+    else:
+        print("Cannot push left")
+        
+    print("\nPush Right Test:")
+    print("Initial state:")
+    for row in push_right:
+        print(row)
+    right_move = try_move(push_right, 'right')
+    if right_move:
+        print("Result after pushing right:")
+        for row in right_move:
+            print(row)
+    else:
+        print("Cannot push right")
+    
+    # Continue with original tests...
+    print("\n\nExample 0 (PDF state):")
+    print("Initial state s0:")
+    for row in s0:
         print(row)
     
-    print("\nIs this a goal state?", goal_test(example_state))
+    print("\nIs this a goal state?", goal_test(s0))
     
-    print("\nPossible next states:")
-    next_states_list = next_states(example_state)
+    print("\nPossible next states from s0:")
+    next_states_list = next_states(s0)
     for i, state in enumerate(next_states_list):
         print(f"Next state {i+1}:")
         for row in state:
             print(row)
         print()
     
-    print("h0 heuristic:", h0(example_state))
-    print("h1 heuristic:", h1(example_state))
-    print("Custom heuristic:", h123456789(example_state))
+    print("h0 heuristic:", h0(s0))
+    print("h1 heuristic:", h1(s0))
+    print("Custom heuristic:", h123456789(s0))
     
-    # Test A* search
-    print("\nRunning A* search with h1 heuristic...")
-    path = astar(example_state, goal_test, next_states, move_cost, h1)
+    # Test s1
+    print("\n\nExample 1:")
+    print("Initial state s1:")
+    for row in s1:
+        print(row)
+    
+    print("\nIs this a goal state?", goal_test(s1))
+    
+    print("\nPossible next states from s1:")
+    next_states_list = next_states(s1)
+    for i, state in enumerate(next_states_list):
+        print(f"Next state {i+1}:")
+        for row in state:
+            print(row)
+        print()
+    
+    print("h0 heuristic:", h0(s1))
+    print("h1 heuristic:", h1(s1))
+    print("Custom heuristic:", h123456789(s1))
+    
+    # Test s2
+    print("\n\nExample 2:")
+    print("Initial state s2:")
+    for row in s2:
+        print(row)
+    
+    print("\nIs this a goal state?", goal_test(s2))
+    
+    print("\nPossible next states from s2:")
+    next_states_list = next_states(s2)
+    for i, state in enumerate(next_states_list):
+        print(f"Next state {i+1}:")
+        for row in state:
+            print(row)
+        print()
+    
+    print("h0 heuristic:", h0(s2))
+    print("h1 heuristic:", h1(s2))
+    print("Custom heuristic:", h123456789(s2))
+    
+    # Test A* search with s1
+    print("\nRunning A* search on s1 with h1 heuristic...")
+    path = astar(s1, goal_test, next_states, move_cost, h1)
     
     if path:
         print(f"Solution found with {len(path)-1} moves:")
@@ -389,4 +544,4 @@ if __name__ == "__main__":
                 print(row)
             print()
     else:
-        print("No solution found.")
+        print("No solution found for s1.")
