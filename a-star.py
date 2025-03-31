@@ -310,7 +310,7 @@ def h1(state):
                 count += 1
     return count
 
-# Custom heuristic function - you should replace this with your own ID
+# Custom heuristic function
 def h307367910(state):
     """
     A custom heuristic function that aims to make the A* search more efficient.
