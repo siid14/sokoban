@@ -111,6 +111,14 @@ def astar(start_state, goal_p, successors, cost_fn, remaining_cost_fn):
                 generated += 1
                 open_list.add(MyPath(state2, my_path, cost, total_cost), total_cost)
 
+                # DO NOT DELETE COMMENTS OR INSTRUCTIONS
+# The rest of the code for testing and other purposes would go here
+'''
+Write a function called goaltest that takes a state as the argument and returns true (t) if
+and only if the state is a goal state of the game. A state is a goal state if it satisfies the game
+terminating condition described in te comment seen in the goaltest function.
+'''
+
 # Constants for the game
 EMPTY = 0
 WALL = 1
