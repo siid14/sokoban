@@ -114,8 +114,8 @@ def astar(start_state, goal_p, successors, cost_fn, remaining_cost_fn):
 # Constants for the game
 EMPTY = 0
 WALL = 1
-KEEPER = 2
-BOX = 3
+KEEPER = 3
+BOX = 2
 GOAL = 4
 BOX_ON_GOAL = 5
 KEEPER_ON_GOAL = 6
@@ -350,7 +350,7 @@ def move_cost(state1, state2):
 # Test the implementation with the provided examples
 if __name__ == "__main__":
     # Example Sokoban states
-    # 0 = empty, 1 = wall, 2 = keeper, 3 = box, 4 = goal, 5 = box on goal, 6 = keeper on goal
+    # 0 = empty, 1 = wall, 2 = box, 3 = keeper, 4 = goal, 5 = box on goal, 6 = keeper on goal
     s1 = [
         [1, 1, 1, 1, 1],
         [1, 0, 0, 4, 1],
@@ -363,7 +363,7 @@ if __name__ == "__main__":
     s2 = [
         [1, 1, 1, 1, 1],
         [1, 0, 0, 4, 1],
-        [1, 0, 2, 3, 1],
+        [1, 0, 3, 2, 1],
         [1, 0, 0, 0, 1],
         [1, 0, 0, 0, 1],
         [1, 1, 1, 1, 1]
